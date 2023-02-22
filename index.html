@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <link href="style.css" rel="stylesheet">
+    <script>
+        function validate()
+        {
+            var fname = document.getElementById('fname').value;
+            var lname = document.getElementById('lname').value;
+            var email = document.getElementById('email').value;
+            var pass = document.getElementById('pass').value;
+            var cpass = document.getElementById('cpass').value;
+            var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;    
+            if (fname==null || fname=="")
+            {  
+                alert("First Name can't be blank");  
+                return false;  
+            }
+            else if (lname==null || lname=="")
+            {  
+                alert("Last Name can't be blank");  
+                return false;  
+            }
+            if (email == "" || !regEmail.test(email)) 
+            {
+                window.alert("Please enter a valid e-mail address.");
+                email.focus();
+                return false;
+            }
+            else if(pass=="" || pass.length<6)
+            {  
+                alert("Please provide a valid password");  
+                return false;  
+            }  
+            else if(pass!=cpass)
+            {
+                alert("Password not matching");
+                return false;
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1 class="heading">Academic Guide</h1>
+        <h2><b><u>Registration</u></b></h2>
+    </header>
+    <div class="container">
+        <div class="form">
+            <div class="sign-up-box">
+                <input type="text" 
+                   class="fname" id="fname"
+                   placeholder="Enter your first name">
+                <input type="text" 
+                   class="lname" id="lname" 
+                   placeholder="Enter your last name">
+                <input type="email" 
+                   class="email field" id="email"
+                   placeholder="youremail@email.com">
+                <input type="password" 
+                   class="password field" id="pass"
+                   placeholder="Password">
+                <input type="password" 
+                   class="password field" id="cpass"
+                   placeholder="Confirm password">
+                <button class="clkbtn" type="submit" id="submit" onclick="validate(this.body)">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
